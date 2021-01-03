@@ -30,9 +30,6 @@ def scrape():
     # Gather document to insert
     nasa_document = scrape_mars.scrape_all()
 
-    # Insert into the mars collection
-    # mars_coll.insert_one(nasa_document)
-
     # Upsert into the mars collection (preferred to avoid duplicates)
     mars_coll.update_one({}, {'$set': nasa_document}, upsert=True)
 
